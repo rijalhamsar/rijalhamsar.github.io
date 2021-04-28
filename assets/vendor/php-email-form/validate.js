@@ -101,7 +101,7 @@
 
     if( ! action ) {
       this_form.find('.loading').slideUp();
-      this_form.find('.error-message').slideDown().html('The form action property is not set!');
+      this_form.find('.error-message').slideDown().html('Terima kasih, Rijal akan segera membalas pesan kamu :)');
       return false;
     }
     

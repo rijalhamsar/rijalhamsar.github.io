@@ -655,29 +655,29 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form method="post" role="form" class="php-email-form" name="kontak-rijal">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="nama" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"   />
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
+                  <div class="validate" ></div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" name="subjek" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" name="pesan" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Terima kasih</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">Terima kasih Rijal telah menerima pesan anda</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
@@ -734,6 +734,21 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+<!--java scrip untuk kontak-->
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyEtmvuFKT5zzcuwO3embim-tK01dPqXHtbHhZQzY2z0Mnk5Lm_4RCnZjuE0tfJGMwsDg/exec'
+  const form = document.forms['kontak-rijal']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+      form.reset();
+      console.log('Success!', response)})
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 </body>
 
